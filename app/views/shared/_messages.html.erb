@@ -1,0 +1,8 @@
+<% if @article.errors.any? %>
+<h1>Action could not be completed for the following <%= pluralize(@article.errors.count, "reason")%>:</h1>
+<ul>
+  <% @article.errors.full_messages.each do |msg| %>
+  <li> <%= msg %> </li>
+  <% end %>
+</ul>
+<% end %>
