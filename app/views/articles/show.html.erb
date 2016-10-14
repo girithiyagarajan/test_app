@@ -1,5 +1,13 @@
-<h1>Title: </h1>
-<%= @article.title %> <br>
-<h1>Description: </h1>
-<%= @article.description %> <br>
-<%= link_to "Listing", articles_path %> | <%= link_to "Add New", new_article_path %> 
+<div class="row col-xs-offset-3">
+  <div class="form-group">
+    <h1>Title: </h1>
+    <%= @article.title %><br>
+  </div>
+  
+  <div class="form-group">
+    <h1>Description: </h1> 
+    <%= @article.description %> <br>
+  </div>
+  
+  <%= link_to "Listing", articles_path %> | <%= link_to "Add New", new_article_path %> 
+</div>

@@ -1,17 +1,19 @@
-
-<table>
-  <th>
-      <td><h1>Title</h1></td>
-      <td><h1>Description</h1></td>
-  </th>
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.description %></td>
-    <td><%= link_to "Show", article_path(article) %></td>
-    <td><%= link_to "Edit", edit_article_path(article) %></td>
-    <td><%= link_to "Delete", article_path(article), method: :delete %></td>
-  </tr>
-  <% end %>
-</table>
-<%=link_to "New Article", new_article_path %>
+<div class="row">
+  <div class="container">
+    <table class="table table-hover col-md-12">
+        <th><h1>Title</h1> </th>
+        <th><h1>Description</h1></th>
+        <th><h1>Actions</h1></th>
+        <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.description %></td>
+          <td><%= link_to "Show", article_path(article), class:"btn btn-primary btn-lrg" %>
+              <%= link_to "Edit", edit_article_path(article),class:"btn btn-warning btn-lrg" %>
+              <%= link_to "Delete", article_path(article), class:"btn btn-danger btn-lrg", method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+        <% end %>
+    </table>
+    <%=link_to "New Article", new_article_path,class:"btn btn-primary btn-lrg" %>
+  </div>
+</div>

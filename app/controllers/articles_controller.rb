@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   def update
     @article = find_article
     if @article.update(permit_params)
-      flash[:notice] = "Article successfully Updated"
+      flash[:success] = "Article successfully Updated"
       redirect_to article_path(@article)
     else
       render "edit"
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(permit_params)
     if @article.save
-      flash[:notice] = "Article successfully Created"
+      flash[:success] = "Article successfully Created"
       redirect_to article_path(@article)
     else
       render "new"
