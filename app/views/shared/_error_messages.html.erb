@@ -1,15 +1,15 @@
-<% if @article.errors.any? %>
+<% if obj.errors.any? %>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <div class="panel panel-danger">
       <div class="panel-heading">
         <div class="panel-title">
-          <h3>Action could not be completed for the following <%= pluralize(@article.errors.count, "reason")%>:</h3>
+          <h3>Action could not be completed for the following <%= pluralize(obj.errors.count, "reason")%>:</h3>
         </div>
       </div>
       <div class="panel-body">
         <ul>
-          <% @article.errors.full_messages.each do |msg| %>
+          <% obj.errors.full_messages.each do |msg| %>
           <li> <%= msg %> </li>
           <% end %>
         </ul>

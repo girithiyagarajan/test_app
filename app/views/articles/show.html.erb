@@ -1,13 +1,23 @@
 <div class="row col-xs-offset-3">
-  <div class="form-group">
-    <h1>Title: </h1>
-    <%= @article.title %><br>
+  <div class="well col-xs-8">
+    <% if @article.user %>
+      <p> Created by : <%= link_to @article.user.username, user_path(@article.user) %> </p>
+    <% end %>
+    
+    <div class="article-title">
+      <strong>Title: </strong>
+      <%= @article.title %><br>
+    </div>
+    
+    <div class="article-body">
+      <strong>Description: </strong> 
+      <%= @article.description %> <br>
+    </div>
+
+    <div class="article-actions">
+      <%= link_to "Add New", new_article_path, class:"btn btn-primary btn-lrg" %> 
+      <%= link_to "Delete", article_path(@article), class:"btn btn-primary btn-lrg", method: :delete, data: {confirm: "Are you sure you want to delete?"} %> 
+      <%= link_to "Edit Article", edit_article_path, class:"btn btn-warning btn-lrg" %>
+    </div>
   </div>
-  
-  <div class="form-group">
-    <h1>Description: </h1> 
-    <%= @article.description %> <br>
-  </div>
-  
-  <%= link_to "Listing", articles_path %> | <%= link_to "Add New", new_article_path %> 
 </div>

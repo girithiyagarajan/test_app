@@ -1,0 +1,40 @@
+<%= render 'shared/error_messages', obj: @user %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(@user, :html=>{class: "form-horizontal", role: "form"}) do |f|%>
+      <div class="form-group row-xs-2">
+        <div class="col-xs-1 col-xs-offset-3">
+          <%= f.label "Username", class:"form-label"  %> 
+        </div> 
+        <div class="col-xs-5">
+          <%= f.text_field :username, class: "form-control"   %> 
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-xs-1 col-xs-offset-3">
+          <%= f.label "Email", class:"form-label"  %> 
+        </div>
+        <div class="col-xs-5">
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row-xs-10">  
+        <div class="col-xs-1 col-xs-offset-3">
+          <%= f.label "Password", class:"form-label"  %> 
+        </div>
+        <div class="col-xs-5">
+          <%= f.text_field :password, class:"form-control", rows: 12 %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-8">
+          <%= f.submit(@user.new_record? ? 'Sign up':'Update Account', class:"btn btn-primary") %>
+          <%= button_tag 'Cancel', class:"btn btn-primary", type: "submit", name: "cancel" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

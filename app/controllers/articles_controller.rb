@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_filter :check_for_cancel, only: [:create,:update]
   
   def index
-    @articles = Article.all
+    @articles = Article.all.paginate(page: params[:page], per_page: 2)
   end
   
   def new
@@ -11,12 +11,12 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = find_article
+    find_article
   end
   
   def update
-    @article = find_article
-    if @article.update(permit_params)
+    find_article
+    if @article.update(article_permit_params)
       flash[:success] = "Article successfully Updated"
       redirect_to article_path(@article)
     else
@@ -26,7 +26,8 @@ class ArticlesController < ApplicationController
   
   
   def create
-    @article = Article.new(permit_params)
+    @article = Article.new(article_permit_params)
+    @article.user = current_user
     if @article.save
       flash[:success] = "Article successfully Created"
       redirect_to article_path(@article)
@@ -36,7 +37,7 @@ class ArticlesController < ApplicationController
   end
   
   def destroy
-    @article = find_article
+    find_article
     @article.destroy
     redirect_to articles_path
   end
@@ -49,7 +50,7 @@ class ArticlesController < ApplicationController
   
   private
   
-    def permit_params
+    def article_permit_params
       params.require(:article).permit(:title, :description)
     end
     
@@ -58,7 +59,6 @@ class ArticlesController < ApplicationController
     end
     
     def check_for_cancel
-  
        redirect_to articles_path if params[:cancel]
     end
 end

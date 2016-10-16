@@ -11,5 +11,11 @@
 <%= render 'layouts/flash_feedback' %>
 <%= yield %>
 
+<!--only for debugging development-->
+<div class="col-xs-8 col-xs-offset-2" align='center'>
+  <%= debug(params) if Rails.env.development? %> 
+</div>
+<!--only for debugging development-->
+
 </body>
 </html>
