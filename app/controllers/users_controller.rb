@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_for_cancel, only: [:create, :update]
-  
+  # controller checks for login sessions still pending
   
   def index
     @users = User.all.paginate(page: params[:page], per_page: 2)
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   def destroy
     find_user
     @user.destroy
+    flash[:success] = "User and associated articles successfully deleted"
     redirect_to users_path
   end
   

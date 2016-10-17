@@ -12,15 +12,17 @@
       <div class="article-body">
         <%= user.email %>
       </div>
-      <div class="article-actions">
-        <%= link_to "Show", user_path(user), 
-            class:"btn btn-primary btn-lrg" %>
-        <%= link_to "Edit", edit_user_path(user),
-            class:"btn btn-warning btn-lrg" %>
-        <%= link_to "Delete", user_path(user), 
-            class:"btn btn-danger btn-lrg", 
-            method: :delete, data: {confirm: "Are you sure?"} %>
-      </div>
+      <% if current_user == user %>
+        <div class="article-actions">
+          <%= link_to "Show", user_path(user), 
+              class:"btn btn-primary btn-lrg" %>
+          <%= link_to "Edit", edit_user_path(user),
+              class:"btn btn-warning btn-lrg" %>
+          <%= link_to "Delete", user_path(user), 
+              class:"btn btn-danger btn-lrg", 
+              method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

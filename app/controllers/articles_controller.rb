@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  
-  before_filter :check_for_cancel, only: [:create,:update]
+    before_filter :check_for_cancel, only: [:create,:update]
+    # controller checks for login sessions still pending
   
   def index
     @articles = Article.all.paginate(page: params[:page], per_page: 2)
@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_permit_params)
     @article.user = current_user
+    
     if @article.save
       flash[:success] = "Article successfully Created"
       redirect_to article_path(@article)

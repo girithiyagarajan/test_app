@@ -4,8 +4,6 @@
 </div>  
 
 <div class="col-xs-8 col-xs-offset-2">
-
-  
   <% @articles.each do |article| %> 
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
@@ -16,14 +14,17 @@
         <div class="article-body">
           <%= article.description %>
         </div>
+        
         <div class="article-actions">
           <%= link_to "Show", article_path(article), 
-              class:"btn btn-primary btn-lrg" %>
-          <%= link_to "Edit", edit_article_path(article),
-              class:"btn btn-warning btn-lrg" %>
-          <%= link_to "Delete", article_path(article), 
-              class:"btn btn-danger btn-lrg", 
-              method: :delete, data: {confirm: "Are you sure?"} %>
+            class:"btn btn-primary btn-lrg" %>
+          <% if current_user == article.user %>
+              <%= link_to "Edit", edit_article_path(article),
+                  class:"btn btn-warning btn-lrg" %>
+              <%= link_to "Delete", article_path(article), 
+                  class:"btn btn-danger btn-lrg", 
+                  method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>  
         </div>
         <div class="article-meta-details">
           <small> 
@@ -38,6 +39,6 @@
   </div>
   <% end %>
 </div>
-<div align='center'>
+<div class="col-xs-12" align='center'>
   <%= will_paginate %>
 </div>

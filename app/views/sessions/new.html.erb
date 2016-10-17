@@ -1,0 +1,33 @@
+<div align='center'>
+  <p><h1>Please Login</h1></p>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(:session, :html=>{class: "form-horizontal", role: "form"}, url: login_path) do |f|%>
+      <div class="form-group">
+        <div class="col-xs-1 col-xs-offset-3">
+          <%= f.label "Email", class:"form-label"  %> 
+        </div>
+        <div class="col-xs-5">
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">  
+        <div class="col-xs-1 col-xs-offset-3">
+          <%= f.label "Password", class:"form-label"  %> 
+        </div>
+        <div class="col-xs-5">
+          <%= f.text_field :password, class:"form-control", autocomplete: false %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-8">
+          <%= f.submit 'Login', class:"btn btn-primary" %>
+          <%= f.submit 'Clear',type: :reset, class:"btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
